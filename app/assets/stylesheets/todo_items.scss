@@ -1,0 +1,21 @@
+// Place all the styles related to the todo_items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.completed_item{
+	padding-left: 10 px;
+	margin: 10 px;
+	border: thin solid green;
+}
+
+.incomplete_item{
+	padding-left: 10 px;
+	margin: 10 px;
+	border: thin solid red;
+
+}
+
+.description{
+	padding-left: 25 px;
+	background: lightgrey;
+}

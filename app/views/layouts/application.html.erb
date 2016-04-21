@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TodoListsApp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<h1>Todo List Application</h1>
+<hr/>
+<% if logged_in? %>
+	
+	<div style='float: right;' class="navigation_bar">
+	<%= link_to "Logout", logout_path, data: {method: :delete} %>
+	</div>
+	<div style='float: right;' class="navigation_bar">
+	<%= link_to "Home", todo_lists_path %>
+	</div>
+	<div style='float: right;' class="navigation_bar">
+	<%= link_to 'Account', edit_account_path(current_user.account) %>
+	</div>
+
+	<br/>
+	<hr/>
+	<div style='float: right;'>
+	You are logged in as <%= current_user.account.first_name %>
+	</div>
+<% end %>
+
+
+<% flash.each do |key, value| %>
+  <%= content_tag :p, value, id: key %>
+<% end %>
+<%= yield %>
+
+</body>
+</html>

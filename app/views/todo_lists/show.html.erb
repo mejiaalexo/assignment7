@@ -1,0 +1,17 @@
+<h1>Todo List View</h1>
+<div class="todoList">
+ <%= content_tag(:span, "List Name: #{@todo_list.list_name} due date: #{@todo_list.list_due_date}", class: "list_link") %>
+ <%= link_to 'Edit', edit_todo_list_path(@todo_list) %>
+</div>
+
+<div id ="todoItems">
+<%= render @items%>
+</div>
+<%= will_paginate @items %>
+
+<%= link_to "Add Item", new_todo_list_todo_item_path(@todo_list) %>
+
+<br/>
+<p/>
+
+<%= link_to 'Back', todo_lists_path %>

@@ -1,0 +1,32 @@
+<div>
+	<%= form_for([@list,@item]) do |f| %>
+	<% if @item.errors.any? %>
+      <div id="error_explanation">
+      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this todo_item from being saved:</h2>
+      </div>
+      <% end %>
+
+
+	<div class="field">
+		<%= f.label :task_title %>
+		<%= f.text_field :task_title %>
+	</div>
+	<div class="field">
+		<%= f.label :description %>
+		<%= f.text_area :description, size: "40x12" %>
+	</div>
+	<div class="field">
+		<%= f.label :due_date %>
+		<%= f.date_select :due_date %>
+	</div>
+	<% if @item.id %>
+	<div class="field">
+		<%= f.label :done, "Task Completed" %>
+		<%= f.check_box :done %>
+	</div>
+	<% end %>
+	<div class="actions">
+		<%= f.submit TodoItemsHelper.FormButtonText(@item) %>
+	</div>
+	<% end %>
+</div>

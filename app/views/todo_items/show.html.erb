@@ -1,0 +1,31 @@
+<h1>Todo Item View</h1>
+
+<% if TodoItemsHelper.isComplete(@item) %>
+	<% $divId = "completed_item" %>
+	<% else %>
+	<% $divId = "incomplete_item" %>
+	<%end%>
+
+<div class=<%= $divId %>>
+	<div>
+		<span class="todo_item_title">
+		<%= link_to "#{@item.task_title} " , todo_list_todo_item_path(@list,@item) %>
+		
+		</span>  
+		<%= link_to "Delete", [@list,@item],
+		  data: { confirm: "Item will be deleted?" },
+		  method: :delete %>
+		<%= link_to 'Edit', edit_todo_list_todo_item_path(@list,@item) %>
+	</div>
+	
+	<div class=description>
+	<%= simple_format(@item.description) %>
+	</div>
+	<div style='float: right;'>
+	<%= " Due Date: #{@item.due_date}" %>
+	<%= " Status: #{TodoItemsHelper.complete?(@item)}" %>
+	</div>
+</div>
+<br/>
+
+<%= link_to 'Back', todo_list_path(@list) %>

@@ -1,0 +1,22 @@
+<h1><%= session[:user_name] %>'s Todo Lists</h1>
+
+
+<% @todo_lists.each do |list| %>
+
+    <% $complete = TodoListsHelper.isComplete(list)  %>
+    <div class="list">
+    <% if $complete%>
+      <%= content_tag(:span, "#{list.list_due_date}  ", class: "completed_list") %>
+    <% else%>
+      <%= content_tag(:span, "#{list.list_due_date}  ", class: "incomplete_list") %>
+    <% end %>
+      <%= link_to "#{list.list_name}",list, class: "list_link" %>
+      <%= link_to 'Edit', edit_todo_list_path(list) %>
+      <%= link_to 'Delete', list, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+<% end %>
+
+<br>
+<%= will_paginate @todo_lists %>
+
+<%= link_to 'New Todo list', new_todo_list_path %>

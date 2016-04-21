@@ -1,0 +1,21 @@
+<h1>Login</h1>
+<%= form_for(:user, url: sessions_path) do |f| %>
+
+	<div class="field">
+	<%= f.label :login %>
+	<%= f.text_field :login, required: true %>
+	</div>
+
+	<p/>
+
+	<div class="field">
+	<%= f.label :password %>
+	<%= f.password_field :password, required: true %>
+	</div>
+
+	<div class="actions">
+	<%= f.submit "Login" %>
+	</div>
+
+<% end %>
+
